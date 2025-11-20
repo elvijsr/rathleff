@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AppProvider, useApp } from './context/AppContext';
+import { Layout } from './components/Layout';
+import { Onboarding } from './pages/Onboarding';
+import { Dashboard } from './pages/Dashboard';
+import { WorkoutSession } from './pages/WorkoutSession';
+import { Profile } from './pages/Profile';
 
-function App() {
-  const [count, setCount] = useState(0)
+function ProtectedRoute ({ children }: { children: React.ReactNode }) {
+  const { user, isLoading } = useApp();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  if (isLoading) return <div className="flex items-center justify-center h-screen">Loading...</div>;
+
+  if (!user) {
+    return <Navigate to="/onboarding" replace />;
+  }
+
+  return <>{children}</>;
 }
 
-export default App
+function AppRoutes () {
+  return (
+    <Routes>
+      <Route path="/onboarding" element={<Onboarding />} />
+      <Route element={<Layout />}>
+        <Route path="/" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/profile" element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        } />
+        <Route path="/workout/start" element={
+          <ProtectedRoute>
+            <WorkoutSession />
+          </ProtectedRoute>
+        } />
+      </Route>
+    </Routes>
+  );
+}
+
+function App () {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </AppProvider>
+  );
+}
+
+export default App;
