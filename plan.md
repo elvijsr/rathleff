@@ -2,19 +2,16 @@
 
 This document outlines the implementation plan for a Minimum Viable Product (MVP) of the Rathleff Protocol application. The app will be a Progressive Web App (PWA)/Single Page Application (SPA) built with Vite, React, and shadcn/ui. The backend will be powered by Supabase.
 
-## 1. Project Setup & Scaffolding
+## 1. Project Setup & Scaffolding (Completed)
 
-*   **Initialize Project:** Set up a new Vite project with the React + TypeScript template.
-    ```bash
-    npm create vite@latest rathleff-app -- --template react-ts
-    ```
-*   **Install Dependencies:**
+*   **Initialize Project:** Set up a new Vite project with the React + TypeScript template in the `www` directory. (Completed)
+*   **Install Dependencies:** (Completed: `react-router-dom`, `tailwindcss`, `@supabase/supabase-js` installed, `shadcn/ui` initialized)
     *   `react-router-dom` for navigation.
     *   `tailwindcss` for styling.
-    *   `shadcn/ui` for UI components.
+    *   `shadcn/ui` for UI components (initialized).
     *   `@supabase/supabase-js` for backend integration.
-*   **Project Structure:** Organize the project into logical folders (`src/components`, `src/pages`, `src/lib`, `src/hooks`, etc.).
-*   **PWA Configuration:** Configure the Vite PWA plugin to enable offline capabilities and "add to homescreen" functionality.
+*   **Project Structure:** Organize the project into logical folders (`src/components`, `src/pages`, `src/lib`, `src/hooks`, etc.). (Completed)
+*   **PWA Configuration:** Configure the Vite PWA plugin to enable offline capabilities and "add to homescreen" functionality. (Completed, placeholder icons needed in `public` directory)
 
 ## 2. Backend Setup (Supabase)
 
