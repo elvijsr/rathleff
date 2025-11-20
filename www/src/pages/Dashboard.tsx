@@ -1,8 +1,10 @@
 import { useApp } from '../context/AppContext';
 import { getDailyStatus } from '../lib/protocol';
+import { useNavigate } from 'react-router-dom';
 
 export function Dashboard () {
     const { user, workouts } = useApp();
+    const navigate = useNavigate();
 
     if (!user) return null;
 
@@ -35,7 +37,10 @@ export function Dashboard () {
                                 <div className="text-xs text-muted-foreground">Load</div>
                             </div>
                         </div>
-                        <button className="w-full mt-4 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-md">
+                        <button
+                            onClick={() => navigate('/workout/start')}
+                            className="w-full mt-4 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-md"
+                        >
                             Start Workout
                         </button>
                     </div>

@@ -118,44 +118,51 @@ export function WorkoutSession () {
                 </div>
             </div>
 
-            <div className="space-y-4 pb-4">
-                {phase === 'idle' && (
-                    <button
-                        onClick={startWorkout}
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-16 rounded-xl text-xl font-bold shadow-lg shadow-primary/20 transition-all active:scale-95"
-                    >
-                        Start Workout
-                    </button>
-                )}
+            {/* Spacer to prevent content from being hidden behind fixed bottom bar */}
+            <div className="h-24" />
 
-                {(phase !== 'idle') && (
-                    <div className="flex gap-4">
-                        {isActive ? (
-                            <button
-                                onClick={pauseWorkout}
-                                className="flex-1 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-16 rounded-xl font-bold text-lg transition-all active:scale-95"
-                            >
-                                Pause
-                            </button>
-                        ) : (
-                            <button
-                                onClick={resumeWorkout}
-                                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 h-16 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 transition-all active:scale-95"
-                            >
-                                Resume
-                            </button>
-                        )}
+            <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-[100] border-t md:absolute pointer-events-auto">
+                <div className="max-w-md mx-auto">
+                    {phase === 'idle' && (
+                        <button
+                            onClick={() => {
+                                startWorkout();
+                            }}
+                            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-16 rounded-xl text-xl font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 cursor-pointer"
+                        >
+                            Start Workout
+                        </button>
+                    )}
 
-                        {phase === 'rest' && (
-                            <button
-                                onClick={skipRest}
-                                className="flex-1 bg-orange-100 text-orange-700 hover:bg-orange-200 dark:bg-orange-900/30 dark:text-orange-100 h-16 rounded-xl font-bold text-lg transition-all active:scale-95"
-                            >
-                                Skip Rest
-                            </button>
-                        )}
-                    </div>
-                )}
+                    {(phase !== 'idle') && (
+                        <div className="flex gap-4">
+                            {isActive ? (
+                                <button
+                                    onClick={pauseWorkout}
+                                    className="flex-1 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-16 rounded-xl font-bold text-lg transition-all active:scale-95"
+                                >
+                                    Pause
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={resumeWorkout}
+                                    className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 h-16 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 transition-all active:scale-95"
+                                >
+                                    Resume
+                                </button>
+                            )}
+
+                            {phase === 'rest' && (
+                                <button
+                                    onClick={skipRest}
+                                    className="flex-1 bg-orange-100 text-orange-700 hover:bg-orange-200 dark:bg-orange-900/30 dark:text-orange-100 h-16 rounded-xl font-bold text-lg transition-all active:scale-95"
+                                >
+                                    Skip Rest
+                                </button>
+                            )}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

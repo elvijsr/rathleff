@@ -17,7 +17,7 @@ export function Onboarding () {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-[80vh] space-y-6">
+        <div className="flex flex-col items-center justify-center min-h-[80vh] space-y-6 p-6">
             <h1 className="text-3xl font-bold text-center">Welcome to Rathleff</h1>
             <p className="text-center text-muted-foreground">
                 The science-backed protocol for plantar fasciitis recovery.

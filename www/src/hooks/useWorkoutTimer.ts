@@ -86,18 +86,25 @@ export function useWorkoutTimer ({ targetReps, targetSets, onComplete }: UseWork
         });
     }, [currentRep, currentSet, side, targetReps, targetSets, onComplete, playAudio]);
 
+    // Timer countdown effect
     useEffect(() => {
         if (isActive && timeLeft > 0) {
             timerRef.current = window.setTimeout(() => {
                 setTimeLeft((t) => t - 1);
             }, 1000);
-        } else if (isActive && timeLeft === 0) {
-            nextPhase();
         }
 
         return () => {
             if (timerRef.current) clearTimeout(timerRef.current);
         };
+    }, [isActive, timeLeft]);
+
+    // Phase transition effect
+    useEffect(() => {
+        if (isActive && timeLeft === 0) {
+            // eslint-disable-next-line
+            nextPhase();
+        }
     }, [isActive, timeLeft, nextPhase]);
 
     const startWorkout = () => {
