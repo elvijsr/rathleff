@@ -1,5 +1,2 @@
-[build]
-nixpkgs = "legacyPackages.x86_64-linux.nixpkgs-24.05"
-
-[phases.setup]
-nixPkgs = ["...", "nodejs-22_x"]
+[variables]
+NIXPACKS_NODE_VERSION = "22.12.0"
