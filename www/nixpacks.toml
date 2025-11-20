@@ -1,7 +1,8 @@
+# 1. Use the 'unstable' archive to ensure we get the latest package definitions
+#    (This overrides the default snapshot that is stuck on old versions)
 [phases.setup]
-# This commit hash contains Node 22.13+
-nixPkgsArchive = '51ad838b03a05b1de6f9f2a0fffecee64a9788ee'
+nixPkgsArchive = 'nixos-unstable'
 
-# CHANGED: used underscore, removed the "-x" suffix
-nixPkgs = ['nodejs_22', 'npm-9_x']
-nixLibs = ['nodejs_22']
+# 2. Request Node 23 (Use underscore, not dash)
+nixPkgs = ['nodejs_23', 'npm-9_x']
+nixLibs = ['nodejs_23']
