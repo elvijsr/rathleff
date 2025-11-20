@@ -1,6 +1,7 @@
 [phases.setup]
-# This hash is from 2025 and contains Node 22.13+
+# This commit hash contains Node 22.13+
 nixPkgsArchive = '51ad838b03a05b1de6f9f2a0fffecee64a9788ee'
 
-# This will now resolve to >= 22.13.0
-nixLibs = ['nodejs-22_x']
+# CHANGED: used underscore, removed the "-x" suffix
+nixPkgs = ['nodejs_22', 'npm-9_x']
+nixLibs = ['nodejs_22']
