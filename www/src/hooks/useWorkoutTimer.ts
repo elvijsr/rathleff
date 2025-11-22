@@ -33,58 +33,61 @@ export function useWorkoutTimer ({ targetReps, targetSets, onComplete }: UseWork
     }, []);
 
     const nextPhase = useCallback(() => {
-        setPhase((prevPhase) => {
-            switch (prevPhase) {
-                case 'prepare':
+        switch (phase) {
+            case 'prepare':
+                playAudio('up');
+                setTimeLeft(TEMPO.CONCENTRIC);
+                setPhase('concentric');
+                break;
+            case 'concentric':
+                playAudio('hold');
+                setTimeLeft(TEMPO.ISOMETRIC);
+                setPhase('isometric');
+                break;
+            case 'isometric':
+                playAudio('down');
+                setTimeLeft(TEMPO.ECCENTRIC);
+                setPhase('eccentric');
+                break;
+            case 'eccentric':
+                if (currentRep < targetReps) {
+                    setCurrentRep(r => r + 1);
                     playAudio('up');
                     setTimeLeft(TEMPO.CONCENTRIC);
-                    return 'concentric';
-                case 'concentric':
-                    playAudio('hold');
-                    setTimeLeft(TEMPO.ISOMETRIC);
-                    return 'isometric';
-                case 'isometric':
-                    playAudio('down');
-                    setTimeLeft(TEMPO.ECCENTRIC);
-                    return 'eccentric';
-                case 'eccentric':
-                    if (currentRep < targetReps) {
-                        setCurrentRep(r => r + 1);
-                        playAudio('up');
-                        setTimeLeft(TEMPO.CONCENTRIC);
-                        return 'concentric';
+                    setPhase('concentric');
+                } else {
+                    // Set complete
+                    // Logic: Left -> Rest -> Right -> Rest -> Next Set Left...
+
+                    // Check if we are finished with the current side
+                    const nextSide = side === 'left' ? 'right' : 'left';
+                    const nextSet = side === 'right' ? currentSet + 1 : currentSet;
+                    const isWorkoutComplete = side === 'right' && currentSet >= targetSets;
+
+                    if (!isWorkoutComplete) {
+                        setSide(nextSide);
+                        setCurrentSet(nextSet);
+                        setCurrentRep(1);
+                        playAudio('rest');
+                        setTimeLeft(TEMPO.REST);
+                        setPhase('rest');
                     } else {
-                        // Set complete
-                        // Logic: Left -> Rest -> Right -> Rest -> Next Set Left...
-
-                        // Check if we are finished with the current side
-                        const nextSide = side === 'left' ? 'right' : 'left';
-                        const nextSet = side === 'right' ? currentSet + 1 : currentSet;
-                        const isWorkoutComplete = side === 'right' && currentSet >= targetSets;
-
-                        if (!isWorkoutComplete) {
-                            setSide(nextSide);
-                            setCurrentSet(nextSet);
-                            setCurrentRep(1);
-                            playAudio('rest');
-                            setTimeLeft(TEMPO.REST);
-                            return 'rest';
-                        } else {
-                            // Workout complete
-                            setIsActive(false);
-                            onComplete();
-                            return 'finished';
-                        }
+                        // Workout complete
+                        setIsActive(false);
+                        onComplete();
+                        setPhase('finished');
                     }
-                case 'rest':
-                    playAudio('prepare');
-                    setTimeLeft(TEMPO.PREPARE);
-                    return 'prepare';
-                default:
-                    return prevPhase;
-            }
-        });
-    }, [currentRep, currentSet, side, targetReps, targetSets, onComplete, playAudio]);
+                }
+                break;
+            case 'rest':
+                playAudio('prepare');
+                setTimeLeft(TEMPO.PREPARE);
+                setPhase('prepare');
+                break;
+            default:
+                break;
+        }
+    }, [phase, currentRep, currentSet, side, targetReps, targetSets, onComplete, playAudio]);
 
     // Timer countdown effect
     useEffect(() => {

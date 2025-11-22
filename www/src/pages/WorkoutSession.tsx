@@ -5,7 +5,7 @@ import { useWorkoutTimer } from '../hooks/useWorkoutTimer';
 import { Pacer } from '../components/Pacer';
 import { getDailyStatus } from '../lib/protocol';
 
-export function WorkoutSession () {
+export function WorkoutSession() {
     const { user, logWorkout } = useApp();
     const navigate = useNavigate();
     const [painLevel, setPainLevel] = useState<number | null>(null);
@@ -87,7 +87,20 @@ export function WorkoutSession () {
     }
 
     return (
-        <div className="flex flex-col h-full py-6 space-y-8">
+        <div className="flex flex-col h-full py-6 space-y-8 relative">
+            <div className="absolute top-0 right-0">
+                <button
+                    onClick={() => {
+                        if (window.confirm('Are you sure you want to cancel the workout?')) {
+                            navigate('/');
+                        }
+                    }}
+                    className="p-2 text-muted-foreground hover:text-foreground rounded-full hover:bg-muted transition-colors"
+                    aria-label="Cancel Workout"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+                </button>
+            </div>
             <header className="grid grid-cols-3 items-start">
                 <div>
                     <h1 className="text-2xl font-bold tracking-tight">Set {currentSet}</h1>

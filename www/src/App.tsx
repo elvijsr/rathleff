@@ -6,8 +6,9 @@ import { Onboarding } from './pages/Onboarding';
 import { Dashboard } from './pages/Dashboard';
 import { WorkoutSession } from './pages/WorkoutSession';
 import { Profile } from './pages/Profile';
+import { Technique } from './pages/Technique';
 
-function AppRoutes () {
+function AppRoutes() {
   return (
     <Routes>
       <Route path="/onboarding" element={<Onboarding />} />
@@ -27,12 +28,17 @@ function AppRoutes () {
             <WorkoutSession />
           </ProtectedRoute>
         } />
+        <Route path="/technique" element={
+          <ProtectedRoute>
+            <Technique />
+          </ProtectedRoute>
+        } />
       </Route>
     </Routes>
   );
 }
 
-function App () {
+function App() {
   return (
     <AppProvider>
       <BrowserRouter>
