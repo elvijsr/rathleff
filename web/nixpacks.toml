@@ -1,0 +1,8 @@
+# 1. Use the 'unstable' archive to ensure we get the latest package definitions
+#    (This overrides the default snapshot that is stuck on old versions)
+[phases.setup]
+nixPkgsArchive = 'nixos-unstable'
+
+# 2. Request Node 23 (Use underscore, not dash)
+nixPkgs = ['nodejs_23', 'npm-9_x']
+nixLibs = ['nodejs_23']
