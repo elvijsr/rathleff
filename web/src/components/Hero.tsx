@@ -20,7 +20,7 @@ export const Hero = ({ onOpenPdf }: HeroProps) => {
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in" style={{animationDelay: '0.1s'}}>
             Strengthen Your Foundation with <br className="hidden md:block" />
-            <span className="gradient-text">Evidence-based load management.</span>
+            <span className="gradient-text">Structured load tracking.</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{animationDelay: '0.2s'}}>
             The first dedicated iOS app for the <strong>Rathleff Protocol</strong>. 

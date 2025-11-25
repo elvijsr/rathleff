@@ -9,12 +9,13 @@ interface WaitlistProps {
 
 export const Waitlist = ({ onOpenPdf }: WaitlistProps) => {
   const [email, setEmail] = useState('');
+  const [hasConsented, setHasConsented] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const { trackEvent } = useAnalytics();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || !hasConsented) return;
     setStatus('loading');
 
     // Capture UTM parameters from URL
@@ -71,29 +72,46 @@ export const Waitlist = ({ onOpenPdf }: WaitlistProps) => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-              <input 
-                type="email" 
-                required
-                placeholder="Enter your email address" 
-                className="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 backdrop-blur-sm transition-all"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={status === 'loading'}
-              />
-              <button 
-                type="submit" 
-                disabled={status === 'loading'}
-                className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold shadow-lg shadow-blue-900/50 transition-all flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {status === 'loading' ? (
-                  <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                ) : (
-                  <>
-                    Join & Get PDF <Download className="w-5 h-5" />
-                  </>
-                )}
-              </button>
+            <form onSubmit={handleSubmit} className="max-w-lg mx-auto text-left">
+              <div className="flex items-start gap-3 mb-4 justify-center sm:justify-start">
+                <input
+                  id="gdpr-consent"
+                  type="checkbox"
+                  required
+                  className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-blue-600 focus:ring-blue-500 focus:ring-offset-slate-900 cursor-pointer"
+                  checked={hasConsented}
+                  onChange={(e) => setHasConsented(e.target.checked)}
+                  disabled={status === 'loading'}
+                />
+                <label htmlFor="gdpr-consent" className="text-sm text-slate-300 cursor-pointer select-none text-left">
+                  I agree to the Privacy Policy and consent to receiving updates.
+                </label>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <input 
+                  type="email" 
+                  required
+                  placeholder="Enter your email address" 
+                  className="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 backdrop-blur-sm transition-all"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === 'loading'}
+                />
+                <button 
+                  type="submit" 
+                  disabled={status === 'loading' || !hasConsented}
+                  className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold shadow-lg shadow-blue-900/50 transition-all flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {status === 'loading' ? (
+                    <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                  ) : (
+                    <>
+                      Join & Get PDF <Download className="w-5 h-5" />
+                    </>
+                  )}
+                </button>
+              </div>
             </form>
           )}
           

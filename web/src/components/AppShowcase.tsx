@@ -30,7 +30,7 @@ export const AppShowcase = () => {
             </div>
             <h3 className="text-xl font-bold mb-3">Progressive Overload</h3>
             <p className="text-slate-600 leading-relaxed">
-              Tracks your sets, reps, and weight. The algorithm tells you exactly when to increase the load based on your pain feedback.
+              Tracks your sets, reps, and weight. Track your metrics against standard protocol guidelines to decide your next step.
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export const AppShowcase = () => {
             </div>
             <h3 className="text-xl font-bold mb-3">Pain Monitoring</h3>
             <p className="text-slate-600 leading-relaxed">
-              Based on the <strong>Silbernagel Model</strong>. Log pain scores post-exercise and next morning. The app adjusts your next session automatically.
+              Based on the <strong>Silbernagel Model</strong>. Log pain scores post-exercise and next morning. The app suggests protocol adjustments for your review.
             </p>
           </div>
         </div>
