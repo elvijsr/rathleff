@@ -18,8 +18,8 @@ export const PdfPreviewModal = ({ isOpen, onClose }: PdfPreviewModalProps) => {
               <FileText className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900">Rathleff Protocol: Clinical Summary</h3>
-              <p className="text-xs text-slate-500">Extracted from Feasibility Study • 2025</p>
+              <h3 className="text-lg font-bold text-slate-900">Rathleff Protocol: Protocol Summary</h3>
+              <p className="text-xs text-slate-500">Based on Published Research • 2025</p>
             </div>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-full text-slate-500 transition-colors">
@@ -46,7 +46,7 @@ export const PdfPreviewModal = ({ isOpen, onClose }: PdfPreviewModalProps) => {
             <ul className="space-y-3 mb-6 list-disc pl-5">
               <li><strong>Position:</strong> Stand on a step, towel under toes to force dorsiflexion.</li>
               <li><strong>Tempo (Critical):</strong> 3 seconds up (concentric), 2 seconds hold (isometric), 3 seconds down (eccentric).</li>
-              <li><strong>Frequency:</strong> Every second day (48hr recovery window is mandatory).</li>
+              <li><strong>Frequency:</strong> Every second day (48hr rest period is mandatory).</li>
             </ul>
 
             <h3 className="text-xl font-bold text-slate-900 mb-4">The 12-Week Progression</h3>
@@ -82,7 +82,7 @@ export const PdfPreviewModal = ({ isOpen, onClose }: PdfPreviewModalProps) => {
                 </tbody>
               </table>
             </div>
-            
+
             <h3 className="text-xl font-bold text-slate-900 mb-4">Pain Monitoring (Silbernagel Model)</h3>
             <p className="mb-4">
               Pain is allowed during exercise if it remains <strong>tolerable (≤ 5/10)</strong> and subsides by the next morning. If morning pain exceeds baseline, load must be reduced.

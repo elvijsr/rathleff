@@ -9,8 +9,8 @@ export const Footer = () => {
           <span className="text-slate-300 font-semibold">Plantarly.com</span>
         </div>
         <div className="text-sm text-center md:text-left">
-          <p>© 2025 Plantarly. Not medical advice. Consult a doctor before starting.</p>
-          <p className="text-xs mt-1 text-slate-600">Plantarly is a wellness tool, not a medical device. Consult a healthcare professional before use.</p>
+          <p>© 2025 Plantarly. For informational and educational purposes only.</p>
+          <p className="text-xs mt-1 text-slate-600">This app is a fitness tracking tool. Consult appropriate professionals before starting any new exercise program.</p>
         </div>
         <div className="flex gap-6">
           <a href="#" className="hover:text-white transition-colors">Privacy</a>

@@ -5,7 +5,7 @@ export const AppShowcase = () => {
     <section id="app-features" className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">The Smart Timer for Rehab</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">The Smart Timer for Training</h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             The protocol works, but adhering to it is hard. The app removes the guesswork.
           </p>
@@ -92,7 +92,7 @@ export const AppShowcase = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Decorative blobs behind phone */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl -z-10"></div>
         </div>

@@ -15,7 +15,8 @@ export const Navigation = () => {
   const navLinks = [
     { href: "#protocol", label: "The Protocol" },
     { href: "#app-features", label: "App Features" },
-    { href: "#science", label: "The Science" },
+    { href: "#research", label: "Research" },
+    { href: "#faq", label: "FAQ" },
   ];
 
   return (
@@ -32,7 +33,7 @@ export const Navigation = () => {
             Plantarly<span className="text-blue-600">.com</span>
           </span>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
           {navLinks.map(link => (
             <a key={link.label} href={link.href} className="hover:text-blue-600 transition-colors">
@@ -46,9 +47,9 @@ export const Navigation = () => {
             Join Beta Waitlist
           </a>
         </div>
-        
+
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 text-slate-600">
-           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />} 
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -56,10 +57,10 @@ export const Navigation = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 p-4 flex flex-col gap-4 shadow-xl">
           {navLinks.map(link => (
-            <a 
-              key={link.label} 
-              href={link.href} 
-              className="text-slate-600 font-medium" 
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-slate-600 font-medium"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.label}

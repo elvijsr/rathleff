@@ -1,16 +1,39 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rathleff Protocol - Evidence-Based Load Management App</title>
-    <meta name="description" content="The first dedicated iOS app for the Rathleff Protocol. Guided high-load strength training for plantar fasciitis." />
-    <meta name="theme-color" content="#3b82f6" />
-    <link rel="manifest" href="manifest.json" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rathleff Protocol - Load Management Training App</title>
+  <meta name="description"
+    content="The first dedicated iOS app for the Rathleff Protocol. Guided high-load strength training protocol tracker." />
+  <meta name="keywords"
+    content="rathleff protocol, plantar fasciitis exercises, heel pain training, load management protocol, strength training tracker, plantar heel pain, evidence-based exercises" />
+  <meta name="theme-color" content="#3b82f6" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Schema.org structured data for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Rathleff Protocol Tracker",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS",
+      "about": {
+        "@type": "MedicalCondition",
+        "name": "Plantar Fasciitis"
+      },
+      "description": "Training protocol tracker based on the Rathleff et al. 2014 research study on high-load strength training for plantar heel pain.",
+      "disclaimer": "For educational and informational purposes only. This app is a fitness tracking tool, not a medical device. Consult healthcare professionals for medical advice, diagnosis, or treatment."
+    }
+    </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

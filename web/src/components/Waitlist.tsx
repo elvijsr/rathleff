@@ -27,8 +27,8 @@ export const Waitlist = ({ onOpenPdf }: WaitlistProps) => {
       const { error } = await supabase
         .from('waitlist')
         .insert([
-          { 
-            email, 
+          {
+            email,
             source: 'plantarly_landing',
             utm_source: utmSource,
             utm_medium: utmMedium,
@@ -44,9 +44,9 @@ export const Waitlist = ({ onOpenPdf }: WaitlistProps) => {
       console.error('Error submitting waitlist:', error);
       // Fallback for demo/dev if Supabase isn't configured yet
       if (import.meta.env.DEV) {
-         setStatus('success'); // Fake success for demo
+        setStatus('success'); // Fake success for demo
       } else {
-         setStatus('error');
+        setStatus('error');
       }
     }
   };
@@ -54,10 +54,10 @@ export const Waitlist = ({ onOpenPdf }: WaitlistProps) => {
   return (
     <section id="waitlist" className="py-24 bg-slate-900 text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Start Your Recovery Today</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">Start Your Training Journey Today</h2>
           <p className="text-slate-300 text-lg mb-10">
             Join the waitlist for the iOS app and we'll send you the <strong>Complete Rathleff Protocol PDF</strong> and a printable tracking sheet immediately for free.
           </p>
@@ -87,19 +87,19 @@ export const Waitlist = ({ onOpenPdf }: WaitlistProps) => {
                   I agree to the Privacy Policy and consent to receiving updates.
                 </label>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
-                  placeholder="Enter your email address" 
+                  placeholder="Enter your email address"
                   className="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 backdrop-blur-sm transition-all"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={status === 'loading'}
                 />
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={status === 'loading' || !hasConsented}
                   className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold shadow-lg shadow-blue-900/50 transition-all flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -114,11 +114,11 @@ export const Waitlist = ({ onOpenPdf }: WaitlistProps) => {
               </div>
             </form>
           )}
-          
+
           {status === 'error' && <p className="mt-4 text-red-400">Something went wrong. Please try again.</p>}
 
           <p className="mt-6 text-sm text-slate-500">
-            We respect your inbox. No spam, just rehab science.
+            We respect your inbox. No spam, just training insights.
           </p>
         </div>
       </div>
