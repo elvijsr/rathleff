@@ -34,7 +34,7 @@ export const Research = () => {
                                 Scand J Med Sci Sports. 2015;25(3):e292-e300.
                             </p>
                             <a
-                                href="https://pubmed.ncbi.nlm.nih.gov/24944706/"
+                                href="https://pubmed.ncbi.nlm.nih.gov/25145882/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm"
